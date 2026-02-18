@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Barista Academy | Professional Coffee Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-brown: #3E2723;
+            --light-brown: #5D4037;
+            --cream: #F5F5DC;
+            --beige: #F9F5E8;
+            --accent-gold: #D4A574;
+            --text-dark: #2C1810;
+            --text-light: #F9F5E8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--beige);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-brown);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--light-brown));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--light-brown) 100%);
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 20 Q30 40 30 60 Q30 80 50 80 Q70 80 70 60 Q70 40 50 20" fill="none" stroke="%23D4A574" stroke-width="0.5" opacity="0.1"/></svg>');
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            border-top: 2px solid var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            display: inline-block;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background-color: var(--accent-gold);
+            color: var(--primary-brown);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background-color: #E6B88A;
+        }
+
+        /* Training Section */
+        .training-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--light-brown);
+            font-size: 1.1rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-brown);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary-brown);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-bottom-left-radius: 10px;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-brown), var(--light-brown));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .duration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-brown);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features i {
+            color: var(--accent-gold);
+        }
+
+        .select-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-brown);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .select-btn:hover {
+            background-color: var(--light-brown);
+            transform: scale(1.02);
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background-color: var(--cream);
+            padding: 5rem 2rem;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .booking-form h2 {
+            text-align: center;
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-brown);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-brown), var(--light-brown));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(62, 39, 35, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--primary-brown);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C1810;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--accent-gold);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mug-hot"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Nepal Barista Academy</h1>
+                    <p>Hospitality is our passion</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#book">Book Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Master the Art of Coffee</h2>
+            <p>"There is nothing impossible to the one who tries."</p>
+            <div class="tagline">Hospitality is our passion</div>
+            <br>
+            <a href="#book" class="cta-button">Book Your Training Now</a>
+        </div>
+    </section>
+
+    <!-- Training Courses -->
+    <section class="training-section" id="courses">
+        <div class="section-title">
+            <h2>Our Training Programs</h2>
+            <p>Choose the perfect course to start your barista journey</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- Basic Course -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Basic Barista Training</h3>
+                    <div class="price">RS 5,000<span>/person</span></div>
+                </div>
+                <div class="card-body">
+                    <div class="duration">
+                        <i class="far fa-clock"></i>
+                        <span>7 Days Intensive</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Coffee bean identification</li>
+                        <li><i class="fas fa-check"></i> Espresso fundamentals</li>
+                        <li><i class="fas fa-check"></i> Milk frothing basics</li>
+                        <li><i class="fas fa-check"></i> Equipment handling</li>
+                        <li><i class="fas fa-check"></i> Basic latte art</li>
+                    </ul>
+                    <button class="select-btn" onclick="selectCourse('basic')">Select Course</button>
+                </div>
+            </div>
+
+            <!-- Advance Course -->
+            <div class="pricing-card featured">
+                <div class="card-header">
+                    <h3>Advance Barista Training</h3>
+                    <div class="price">RS 15,000<span>/person</span></div>
+                </div>
+                <div class="card-body">
+                    <div class="duration">
+                        <i class="far fa-clock"></i>
+                        <span>30 Days Comprehensive</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Everything in Basic</li>
+                        <li><i class="fas fa-check"></i> Advanced latte art</li>
+                        <li><i class="fas fa-check"></i> Brewing techniques</li>
+                        <li><i class="fas fa-check"></i> Coffee roasting intro</li>
+                        <li><i class="fas fa-check"></i> Customer service skills</li>
+                        <li><i class="fas fa-check"></i> Certification included</li>
+                    </ul>
+                    <button class="select-btn" onclick="selectCourse('advance')">Select Course</button>
+                </div>
+            </div>
+
+            <!-- Professional Course -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Professional Barista Training</h3>
+                    <div class="price">RS 25,000<span>/person</span></div>
+                </div>
+                <div class="card-body">
+                    <div class="duration">
+                        <i class="far fa-clock"></i>
+                        <span>45 Days Mastery</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Everything in Advance</li>
+                        <li><i class="fas fa-check"></i> Cupping & tasting</li>
+                        <li><i class="fas fa-check"></i> Competition preparation</li>
+                        <li><i class="fas fa-check"></i> Cafe management</li>
+                        <li><i class="fas fa-check"></i> Menu development</li>
+                        <li><i class="fas fa-check"></i> Job placement assistance</li>
+                    </ul>
+                    <button class="select-btn" onclick="selectCourse('professional')">Select Course</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="booking-section" id="book">
+        <div class="booking-container">
+            <form class="booking-form" id="bookingForm">
+                <h2>Book Your Training Session</h2>
+
+                <div class="success-message" id="successMsg">
+                    <i class="fas fa-check-circle"></i> Booking submitted successfully! We will contact you soon.
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="98XXXXXXXX" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Select Course *</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Select a Course --</option>
+                        <option value="basic">Basic Barista Training - RS 5,000 (7 Days)</option>
+                        <option value="advance">Advance Barista Training - RS 15,000 (30 Days)</option>
+                        <option value="professional">Professional Barista Training - 
